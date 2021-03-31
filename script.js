@@ -1,20 +1,40 @@
 var value;
-var equal;
+var previous=Number($(".result").text());
+var current=0;
 
-$('.btn').on('click', function (e) {
+
+
+
+$('.num').on('click', function (e) {
   value = Number($(this).val());
-  $('#clear').on('click', function (e) {
-    value = 0;
-    $('.equal').text('0');
-  });
 
-  equal = Number($('.equal').text());
+  if(previous==0){
 
-  if (equal === 0) {
-    $('.equal').text(value);
+   previous=Number($(".result").text(`${value}`).text())
+   console.log(previous)
+   
+
+  }else{
+    $(".result").append(`${value}`)
+    previous=Number($(".result").text())
+   
+    console.log(previous)
+
   }
 
-  $('.equal').append(value);
+  
 
   e.preventDefault();
 });
+
+
+//clearing the screen
+$("#clear").on("click",function(e){
+
+  const ui=new Calculator(previous,current)
+  ui.clear()
+
+
+
+
+})
