@@ -1,27 +1,22 @@
 var value;
-var previous = Number($('.result').text());
+var previous;
 var text;
 var current = 0;
 
 $('.num').on('click', function (e) {
-  value = Number($(this).val());
-
-  if (previous == 0) {
-    previous = Number($('.result').text(`${value}`).text());
-  } else {
-    $('.result').append(`${value}`);
-    previous = Number($('.result').text());
-    text=$('.result').text()
-    
-   
-    console.log(eval(text))
+  value = $(this).val();
+  if($(".result").text()==="0"){
+    $(".result").text("")
+    $(".previous").text("")
 
   }
+  $(".result").append(value)
+  $(".previous").append(value)
+  console.log($(".result").text())
+
 
   e.preventDefault();
 });
-
-
 
 //clearing the screen
 $('#clear').on('click', function (e) {
@@ -31,25 +26,47 @@ $('#clear').on('click', function (e) {
 $('.operator').on('click', function (e) {
   const operator = $(this).val();
 
-  if(ui.confirmation()){
-
+  if (ui.confirmation()) {
     $('.result').append(operator);
-    text=$(".result").text()
+    $(".previous").append(operator)
 
   }
 
   e.preventDefault();
 });
 
-
 // when clicking on equal
 $('#equals').on('click', function (e) {
- 
-  ui.display()
-
+  ui.display();
 
   e.preventDefault();
 });
 
+//point on click
+$('#decimal').on('click', function (e) {
+  if (ui.confirmationDot()) {
+    $('.result').append($(this).val());
+      $(".previous").append(".")
 
+  }
 
+  e.preventDefault();
+});
+
+//minus
+$('.minus').on('click', function (e) {
+  if (Number($('.result').text()) === 0) {
+    $('.result').text('-');
+    $('#display1').text('-');
+  } 
+  e.preventDefault();
+});
+
+//zero
+$('#zero').on('click', function (e) {
+  
+  $('.result').append("0");
+  $(".previous").append("0")
+
+  e.preventDefault();
+});
