@@ -8,43 +8,40 @@ class Calculator {
   clear() {
     $('.result').text('0');
     $('.previous').text('0');
-
   }
 
   confirmationDot() {
     let arr = $('.result').text().split('');
 
-    const str =$('.result').text();
+    const str = $('.result').text();
     const result = /(\d\.\d+)(?!\+|\-|\*|\/)/gi.test(str);
     console.log(result); // true
 
-
-
-
     let last = arr[arr.length - 1];
-     if (last ==="."||result===true) {
-       return false;
-     } else {
-       return true;
-     }
-  
+    if (last === '.' || result === true) {
+      return false;
+    } else {
+      return true;
+    }
   }
   confirmation() {
     let arr = $('.result').text().split('');
     let last = arr[arr.length - 1];
-    console.log(last)
-    return true
+    console.log(last);
+    return true;
   }
-
-
 
   display() {
     console.log($('.result').text());
-    var filtered=$(".result").text().match(/(\*|\+|\/|-)?(\.|\-)?\d+/g).join("")
-    console.log(eval(filtered))
+    var filtered = $('.result')
+      .text()
+      .match(/(\*|\+|\/|-)?(\.|\-)?\d+/g)
+      .join('');
+    console.log(eval(filtered));
+    var numbered = Number(eval(filtered).toFixed(4));
+
     $('.previous').text(filtered);
-    $('.result').text(eval(filtered));
-  
+    $('.result').text(numbered);
   }
 }
 

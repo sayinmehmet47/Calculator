@@ -38,6 +38,7 @@ $('.operator').on('click', function (e) {
 // when clicking on equal
 $('#equals').on('click', function (e) {
   ui.display();
+  console.log(Math.ceil(0.4000000))
 
   e.preventDefault();
 });
