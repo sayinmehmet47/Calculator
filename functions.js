@@ -13,8 +13,16 @@ class Calculator {
 
   confirmationDot() {
     let arr = $('.result').text().split('');
+
+    const str =$('.result').text();
+    const result = /(\d\.\d+)(?!\+|\-|\*|\/)/gi.test(str);
+    console.log(result); // true
+
+
+
+
     let last = arr[arr.length - 1];
-     if (last ===".") {
+     if (last ==="."||result===true) {
        return false;
      } else {
        return true;
@@ -32,8 +40,10 @@ class Calculator {
 
   display() {
     console.log($('.result').text());
-    $('.previous').text($('.result').text());
-    $('.result').text(eval($('.result').text()));
+    var filtered=$(".result").text().match(/(\*|\+|\/|-)?(\.|\-)?\d+/g).join("")
+    console.log(eval(filtered))
+    $('.previous').text(filtered);
+    $('.result').text(eval(filtered));
   
   }
 }

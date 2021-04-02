@@ -53,6 +53,8 @@ $('#decimal').on('click', function (e) {
   e.preventDefault();
 });
 
+
+
 //minus
 $('.minus').on('click', function (e) {
   if (Number($('.result').text()) === 0) {
