@@ -9,30 +9,32 @@ class Calculator {
     $('.result').text('0');
     $('.previous').text('0');
 
-    previous = 0;
   }
 
+  confirmationDot() {
+    let arr = $('.result').text().split('');
+    let last = arr[arr.length - 1];
+     if (last ===".") {
+       return false;
+     } else {
+       return true;
+     }
+  
+  }
   confirmation() {
     let arr = $('.result').text().split('');
     let last = arr[arr.length - 1];
-    console.log(last === '*');
-    if (
-      last === '*' ||
-      last === '+' ||
-      last === '/' ||
-      last === '-' ||
-      last === '='
-    ) {
-      return false;
-    } else {
-      return true;
-    }
+    console.log(last)
+    return true
   }
 
+
+
   display() {
-    console.log(text);
-    $('.result').text(eval(text));
-    $('.previous').text(text);
+    console.log($('.result').text());
+    $('.previous').text($('.result').text());
+    $('.result').text(eval($('.result').text()));
+  
   }
 }
 
